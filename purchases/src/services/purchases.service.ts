@@ -36,4 +36,12 @@ export class PurchasesService {
       },
     });
   }
+
+  getPurchasesByCustomerId(customerId: string) {
+    return this.prisma.purchase.findMany({
+      where: {
+        customerId,
+      },
+    });
+  }
 }
