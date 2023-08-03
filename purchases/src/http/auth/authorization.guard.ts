@@ -23,9 +23,6 @@ export class AuthorizationGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const { req, res } = GqlExecutionContext.create(context).getContext();
 
-    console.log('AUTH0_AUDIENCE', this.AUTH0_AUDIENCE);
-    console.log('AUTH0_DOMAIN', this.AUTH0_DOMAIN);
-
     const jwtCheck = promisify(
       expressjwt({
         secret: expressJwtSecret({
