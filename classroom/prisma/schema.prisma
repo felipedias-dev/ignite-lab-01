@@ -10,9 +10,12 @@ datasource db {
 model Student {
   id String @id @default(uuid())
 
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @default(now()) @updatedAt
+  authUserId String? @unique
+
   enrollments Enrollment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 }
 
 model Course {
@@ -21,9 +24,10 @@ model Course {
   title String
   slug  String @unique
 
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @default(now()) @updatedAt
   enrollments Enrollment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 }
 
 model Enrollment {
